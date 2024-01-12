@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Electron</title>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    />
+
+    <style>
+      html,body {
+        margin: 0;
+        /* 禁止 html,body 滚动，避免滚动条出现在标题栏右边 */
+        overflow: hidden;
+        height: 100%;
+      }
+      .root {
+        /*  */
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background-color: black;
+        color: white;
+      }
+      .custom-titlebar {
+        display: flex;
+        align-items: center;
+        /* 避免被收缩 */
+        flex-shrink: 0;
+        /* 高度与 main.js 中 titleBarOverlay.height 一致  */
+        height: 35px;
+        width: 100%;
+        /* 标题栏始终在最顶层（避免后续被 Modal 之类的覆盖） */
+        z-index: 9999;
+        /* 避免选中窗口标题 */
+        user-select: none;
+        /* 设置该属性表明这是可拖拽区域，用来移动窗口 */
+        -webkit-app-region: drag;
+        background-color: #23272e;
+        color: white;
+        padding-left: 12px;
+        font-size: 14px;
+      }
+      .custom-titlebar.darwin {
+        justify-content: center;
+      }
+      .custom-titlebar.darwin.fullscreen {
+        display: none;
+      }
+      .custom-titlebar.linux {
+        display: none;
+      }
+      .content {
+        /* 内容区需要设置可滚动 */
+        overflow: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="root">
+      <div
+        class="custom-titlebar"
+      >
+        自定义标题栏
+      </div>
+      <div class="content">
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+      </div>
+    </div>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
